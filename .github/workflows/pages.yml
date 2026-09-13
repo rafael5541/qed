@@ -28,7 +28,8 @@ jobs:
       - name: stage
         run: |
           mkdir -p dist
-          cp -r web examples dist/
+          cp -r web/* dist/
+          cp -r examples dist/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
