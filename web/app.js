@@ -152,7 +152,7 @@ exampleSel.onchange = async () => {
   const name = exampleSel.value;
   if (!name) return;
   try {
-    const res = await fetch('../examples/' + name + '.formula');
+    const res = await fetch('./examples/' + name + '.formula');
     if (!res.ok) throw new Error(res.status);
     editor.value = await res.text();
   } catch {
