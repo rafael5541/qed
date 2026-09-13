@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>qed</title>
+<style>
+html { color-scheme: dark; }
+html, body { height: 100%; }
+body { background: #111; color: #eee; font-family: monospace; margin: 0; padding: 1em; box-sizing: border-box; display: flex; flex-direction: column; height: 100vh; }
+h1 { font-size: 1.2em; margin: 0 0 0.5em; }
+#toolbar { margin-bottom: 0.5em; }
+button, select, input, textarea { font-family: monospace; font-size: 1em; }
+button { margin-right: 0.5em; }
+#keys { margin-bottom: 0.25em; line-height: 2; }
+#keys button { margin: 0 0.15em 0.15em 0; min-width: 2em; }
+#keys .group { color: #888; margin: 0 0.4em 0 0; }
+textarea, pre, input { background: #1a1a1a; color: #eee; border: 1px solid #444; }
+#panes { flex: 1; min-height: 0; display: grid; grid-template-columns: 3fr 2fr; gap: 1em; align-items: stretch; }
+#left { display: flex; flex-direction: column; min-height: 0; }
+#editor { flex: 1; min-height: 12em; resize: both; overflow: auto; width: 100%; box-sizing: border-box; }
+#right { min-height: 0; display: flex; }
+#output { flex: 1; overflow: auto; white-space: pre-wrap; padding: 0.5em; margin: 0; box-sizing: border-box; }
+@media (max-width: 700px) { #panes { grid-template-columns: 1fr; } }
+#status { color: #888; }
+#hint { color: #888; font-size: 0.9em; margin-bottom: 0.5em; }
+label { display: block; margin: 0.5em 0; }
+#stdin { width: 100%; box-sizing: border-box; }
+</style>
+</head>
+<body>
+<h1>qed</h1>
+<div id="toolbar">
+  <button id="run">run</button>
+  <button id="stop" disabled>stop</button>
+  <select id="examples">
+    <option value="">examples…</option>
+  </select>
+  <span id="status"></span>
+</div>
+<div id="panes">
+<div id="left">
+<textarea id="editor" spellcheck="false">f(x) := x² + 1
+∴ f(3) ∎
+</textarea>
+<div id="keys"></div>
+<div id="hint">alt+letter/digit inserts subscript · alt+shift inserts superscript · alt+enter converts alias (chi→χ)</div>
+<label>stdin <input id="stdin" spellcheck="false"></label>
+</div>
+<div id="right">
+<pre id="output"></pre>
+</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
